@@ -3,12 +3,13 @@
 session_start();
 $connexion= new PDO('mysql:host=localhost;dbname=users_base1','root','');
 
+
 if(isset($_GET['id']) && $_GET['id']>0){
     $takeid=intval($_GET['id']);
     $reqt=$connexion->prepare("SELECT * FROM users WHERE id=?");
     $reqt->execute(array($takeid));
     $takeinfo=$reqt->fetch();
- 
+    
 }
 ?>
 <!DOCTYPE html>
@@ -47,11 +48,11 @@ if(isset($_GET['id']) && $_GET['id']>0){
                          <div class="row d-flex justify-content-center">
                              <div class="col-sm-5">
                             <p> ||Edite|| </p>
-                            <i class="far fa-edit fa-2x mb-2"></i>
+                            <a href="edition.php"><i class="far fa-edit fa-2x mb-2"></i></a>
                             </div>
                             <div class="col-sm-5">
                             <p> ||Déconicte|| </p>
-                            <i class="fa fa-power-off mt-2 fa-2x"></i>
+                            <a href="deconnexion.php"><i class="fa fa-power-off mt-2 fa-2x"></i></a>
                             </div>
                          </div>
 

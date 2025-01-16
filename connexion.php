@@ -23,7 +23,7 @@ if (isset($_POST["valider"]))
             $_SESSION['nom']=$info['nom'];
             $_SESSION['prenom']=$info['prenom'];
             $_SESSION['email']=$info['email'];
-            header("Location:profil.php?id=".$_SESSION['id']);
+            header(("Location:profil.php?id=").$_SESSION['id']);
              }     
     }else{
         $message="Ereer: Désile mous me trouvons pas ce compte.";
@@ -39,7 +39,7 @@ if (isset($_POST["valider"]))
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/all.min.css">
 </head>
-<body class="bg-light">
+<body class="bg-light col-md-6 mx-auto p-4">
 <form action="" method="post">
         <h3>Contact</h3>
 
