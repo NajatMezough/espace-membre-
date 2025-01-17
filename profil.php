@@ -35,12 +35,15 @@ if(isset($_GET['id']) && $_GET['id']>0){
                             <h2 class="font-weight-bold  fs-5 mt-5">Bonjour <?=$takeinfo['nom'] ?></h2>
                         <div class="row d-flex justify-content-center">
                             <div class="col-sm-5">
-                            <p class="font-weight-bold">Tel :</p>
+                            <p class="font-weight-bold">Prenom:</p>
                             <p class="font-weight-bold">Email :</p>
+                            <p class="font-weight-bold">Tel :</p>
+                            
                             </div>
                             <div class="col-sm-5">
-                            <p class="text-muted"><?=$takeinfo['email'] ?></p>
                             <p class="text-muted"><?=$takeinfo['prenom'] ?></p>
+                            <p class="text-muted"><?=$takeinfo['telephone'] ?></p>
+                            <p class="text-muted"><?=$takeinfo['email'] ?></p>
                             </div>
                         
                         </div>

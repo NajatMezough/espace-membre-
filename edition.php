@@ -13,29 +13,31 @@ if($connexion){
 }
 if (isset($_POST["valider"])) {
     echo "valider";
-    if(!empty($_POST['nom'])AND !empty($_POST['prenom']) AND !empty($_POST['email']) AND !empty($_POST['password']) AND !empty($_POST['password2']))
+    if(!empty($_POST['nom'])AND !empty($_POST['prenom']) AND !empty($_POST['telephone']) AND !empty($_POST['email']) AND !empty($_POST['password']) AND !empty($_POST['password2']))
     {
         $nom = htmlspecialchars($_POST['nom']);
         $prenom = htmlspecialchars($_POST['prenom']);
+        $telephone = htmlspecialchars($_POST['telephone']);
+        $pack = htmlspecialchars($_POST['pack']);
         $email = htmlspecialchars($_POST['email']);
         $mdp = sha1($_POST['password']);
         $mdp2 = sha1($_POST['password2']);
-     if($mdp===$mdp2)
+     if($mdp==$mdp2)
      {
-        if(strlen($_POST['password'])<7){
+           if(strlen($_POST['password'])<7){
             $message="Erreur :votre mot de passe est trop court."; 
-               }elseif(strlen($nom)>10||strlen($prenom)>10){ 
+            }elseif(strlen($nom)>10||strlen($prenom)>10){ 
                 $message="Erreur :votre nom est trop long."; 
                
-               }else{
-                $insertion =$connexion->prepare("UPDATE users SET nom=?, prenom = ?, email = ? WHERE  id=?");
-               $insertion->execute(array($nom,$prenom,$email,$takeuser['id']));
+            }else{
+                $insertion =$connexion->prepare("UPDATE users SET nom=?, prenom=?, telephone=?, pack=?, email=? WHERE  id=?");
+               $insertion->execute(array($nom,$prenom,$telephone,$pack,$email,$takeuser['id']));
                $message =" Inscription réussie !  Merci, $prenom $nom. Votre modificatin a été enregistrée avec succès.";
                header(("Location:profil.php?id=").$takeuser['id']);
 
             }
       
-     }else{
+        }else{
             $message="Erreur : votre mot de passe invalider.";
         }
     }else{
@@ -62,6 +64,12 @@ if (isset($_POST["valider"])) {
         <label>Lastname</label><br>
         <input type="text" name="prenom" class="form-control" value=" <?=$takeuser['prenom'] ?>" placeholder="Prénom"><br><br>
 
+        <label for="">Pack  to choose:</label>
+      <select   name="pack" class="form-control" placeholder="pack choisir">
+      <option value="Small group">Small group </option>
+      <option value="Individual">Individual</option>
+     </select><br><br> 
+
         <label>Email</label><br>
         <input type="email" name="email" class="form-control" value=" <?=$takeuser['email'] ?>" placeholder="E-mail"><br>
       
@@ -69,7 +77,7 @@ if (isset($_POST["valider"])) {
         <input type="password" name="password" class="form-control" placeholder="Mot de passe"><br>
     
         <label> New Password</label><br>
-        <input type="password" name=" " class="form-control" placeholder="Mot de passe"><br>
+        <input type="password" name="password2" class="form-control" placeholder="Mot de passe"><br>
     
         <button type="submit" name="valider" class="btn btn-success"> S'inscrire </button><br>
         <i style="color:red">

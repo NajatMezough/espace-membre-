@@ -6,9 +6,11 @@ if($connexion){
 }
 if (isset($_POST["valider"])) {
     echo "valider";
-    if(!empty($_POST['nom'])AND !empty($_POST['prenom']) AND !empty($_POST['email']) AND !empty($_POST['password'])){
+    if(!empty($_POST['nom'])AND !empty($_POST['prenom']) AND !empty($_POST['telephone']) AND !empty($_POST['pack']) AND !empty($_POST['email']) AND !empty($_POST['password'])){
         $nom = htmlspecialchars($_POST['nom']);
         $prenom = htmlspecialchars($_POST['prenom']);
+        $telephone = htmlspecialchars($_POST['telephone']);
+        $pack = htmlspecialchars($_POST['pack']);
         $email = htmlspecialchars($_POST['email']);
         $mdp = sha1($_POST['password']);
         if(strlen($_POST['password'])<7){
@@ -18,12 +20,13 @@ if (isset($_POST["valider"])) {
                
                }else{
                 $testmail=$connexion->prepare("SELECT * FROM users where email=?");
-                $testmail->execute(array($email));
+           
+             $testmail->execute(array($email));
                 $controlmail=$testmail->rowCount();
                 if($controlmail==0){
-                $insertion =$connexion->prepare("INSERT INTO users(nom, prenom, email, password)
-                VALUES (?,?,?,?)");
-               $insertion->execute(array($nom,$prenom,$email,$mdp));
+                $insertion =$connexion->prepare("INSERT INTO users(nom, prenom, telephone, pack, email, password)
+                VALUES (?,?,?,?,?,?)");
+               $insertion->execute(array($nom,$prenom,$telephone,$pack,$email,$mdp));
                header("Location: connexion.php");
 
                // Confirmation
@@ -48,18 +51,28 @@ if (isset($_POST["valider"])) {
 </head>
 <body class="bg-light col-md-6 mx-auto p-4">
 <form action="" method="post">
-        <h3>Inscription</h3>
+        <h3>registration</h3>
 
         <label>Name</label><br>
-        <input type="text" name="nom" class="form-control" placeholder="Nom"><br><br>
+        <input type="text" name="nom" class="form-control" placeholder="Nom"><br>
 
         <label>Lastname</label><br>
-        <input type="text" name="prenom" class="form-control" placeholder="Prénom"><br><br>
+        <input type="text" name="prenom" class="form-control" placeholder="Prénom"><br>
 
+        <label>Phone</label><br>
+        <input type="number" name="telephone" class="form-control" placeholder="telephone"><br>
+
+     
+      <label for="">Pack  to choose:</label>
+      <select  name="pack" class="form-control" placeholder="pack choisir">
+      <option value="Small group">Small group </option>
+      <option value="Individual">Individual</option>
+     </select><br><br> 
+     
         <label>Email</label><br>
         <input type="email" name="email" class="form-control" placeholder="E-mail"><br>
       
-        <label>Email</label><br>
+        <label>password</label><br>
         <input type="password" name="password" class="form-control" placeholder="Mot de passe"><br>
     
         <button type="submit" name="valider" class="btn btn-success"> S'inscrire </button><br>
