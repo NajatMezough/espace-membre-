@@ -30,8 +30,35 @@ if (isset($_POST["valider"])) {
                 $message="Erreur :votre nom est trop long."; 
                
             }else{
-                $insertion =$connexion->prepare("UPDATE users SET nom=?, prenom=?, telephone=?, pack=?, email=? WHERE  id=?");
-               $insertion->execute(array($nom,$prenom,$telephone,$pack,$email,$takeuser['id']));
+                $insertion =$connexion->prepare("UPDATE users SET nom=?, prenom=?, telephone=?, pack=?, email=?, mdp2=? WHERE  id=?");
+               $insertion->execute(array($nom,$prenom,$telephone,$pack,$email,$mdp,$id));
+
+               if(isset($_FILES['file']) AND !empty($_FILES['file']['name'])){
+                $taillemax=4098152;
+                $extension=array("jpg"."jpeg"."png");
+            
+                if($_FILES['file']['size']<- $taillemax)
+                {
+                    $extension=startolwor(substr(strrchr($_FILES['file']['name'],'.'),1));
+                    if(in_array($extensionadd,$extension))
+                    {
+                        $chemin='img/'+$_SESSION['id']+'.'+$extensionadd;
+                        $deplassement=nouve_uploded_file($_FILES['file']['tmp_name'].$chemin);
+                        if($deplassement)
+                        {
+                            $updategrofil=$connexion->prepare("UPDATE users SET photo+:photo WHERE id+:id");
+                            $updategrofil->execute(array(["photo"]->$_SESSION["id"]+'.'+$extensionadd,["id"]->$_SESSION["id"]        
+                                ));
+                        }else{
+                            $message="Erreur d'importation.";
+                        }
+                    }else{
+                        $message="Votre photo de profil doit etre au formt,jpg,jpeg ou png";
+                    }
+                }else{
+                        $message="Votre photo de profil ne doit depasser 4Mo";
+                }
+            }
                $message =" Inscription réussie !  Merci, $prenom $nom. Votre modificatin a été enregistrée avec succès.";
                header(("Location:profil.php?id=").$takeuser['id']);
 
@@ -44,6 +71,7 @@ if (isset($_POST["valider"])) {
         $message="Remplissez tous les champs.";
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,12 +83,14 @@ if (isset($_POST["valider"])) {
     <link rel="stylesheet" href="css/all.min.css">
 </head>
 <body class="bg-light col-md-6 mx-auto p-4">
-<form action="" method="post">
-        <h3>Modifier le compte</h3>
+<form action="" method="post" enctype="multipart/form-data">
+        <h3 class="text-center">Modifier le compte</h3>
 
         <label>Name</label><br>
+        
+       
         <input type="text" name="nom" class="form-control" value=" <?=$takeuser['nom'] ?>" placeholder="Nom"><br><br>
-
+      
         <label>Lastname</label><br>
         <input type="text" name="prenom" class="form-control" value=" <?=$takeuser['prenom'] ?>" placeholder="Prénom"><br><br>
 
@@ -78,6 +108,12 @@ if (isset($_POST["valider"])) {
     
         <label> New Password</label><br>
         <input type="password" name="password2" class="form-control" placeholder="Mot de passe"><br>
+
+        <label>photo</label><br>
+        <div class="input-group mb-3>
+        <span class="input-group-text></span>
+        <input type="file" name="file" class="form-control" >
+        </div><br>
     
         <button type="submit" name="valider" class="btn btn-success"> S'inscrire </button><br>
         <i style="color:red">
@@ -90,57 +126,8 @@ if (isset($_POST["valider"])) {
     
 
     </form>
+    <script src="bootstrap.bundle.js"></script>
     </body>
 </html>
-<script src="bootstrap.bundle.js"></script>
-    <!--
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col-lg-4 bg-white m-auto rounded-top">
-                    <h2 class="text-center"> Inscription </h2>
-                    <p class="text-center text-muted lead"> Simple et Rapide </p>
-                    <form action="" method="POST">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-user"></i> </span>
-                            <input type="text" name="nom" class="form-control" placeholder="Nom">
-                        </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-user"></i> </span>
-                            <input type="text" name="prenom" class="form-control" placeholder="Prénom">
-                        </div>
-                        
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-envelope"></i> </span>
-                            <input type="email" name="email" class="form-control" placeholder="E-mail">
-                        </div>
-                        
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-lock"></i> </span>
-                            <input type="password" name="password" class="form-control" placeholder="Mot de passe">
-                        </div>
-                        
-                        <div class="d-grid">
-                            <button type="submit" name="valider" class="btn btn-success"> S'inscrire </button>
-                            <p class="text-center text-muted ">
-                                <i !style="color:red"></i>
-                              <
-                                if(isset($message)){
-                                    echo "$message";
-                                }
-                                ?>
-                                En cliquant sur S’inscrire, vous acceptez nos <a href=""> Conditions générales </a>, notre <a href=""> Politique de confidentialité</a> et notre <a href=""> Politique d’utilisation</a> des cookies.
-                            </p>
-                            <p class="text-center">
-                                Avez vous déjà un compte ? <a href="connexion.html">Connexion </a> 
-                            </p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-         </div>*/
-</body>
-</html>
-<script src="bootstrap.bundle.js"></script>
+   

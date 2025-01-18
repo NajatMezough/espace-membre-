@@ -61,35 +61,7 @@ if (isset($_POST["valider"]))
 
     </form>
 
-        <!--<div class="container">
-            <div class="row mt-5">
-                <div class="col-lg-4 bg-white m-auto rounded-top">
-                    <h2 class="text-center"> Connexion </h2>
-                    <p class="text-center text-muted lead"> Se connecter à WWW</p>
-                    <form action="">
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-envelope"></i> </span>
-                            <input type="text" class="form-control" placeholder="E-mail">
-                        </div>
-                        
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-lock"></i> </span>
-                            <input type="text" class="form-control" placeholder="Mot de passe">
-                        </div>
-                        
-                        <div class="d-grid">
-                            <button type="button" class="btn btn-success"> Se Connecter </button>
-                           
-                            <p class="text-center">
-                                N'avez vous pas de compte ? <a href="inscription.html">Inscription </a> 
-                            </p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-         </div>
+        
 </body>
 </html>
 <script src="bootstrap.bundle.js"></script>

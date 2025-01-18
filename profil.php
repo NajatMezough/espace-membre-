@@ -31,8 +31,21 @@ if(isset($_GET['id']) && $_GET['id']>0){
                     <div class="col-sm-6 bg-white">
                         
                         <div class="card-block text-center text-dark">
-                            <i class="fa-3x mt-4"><img width="82px" src="https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D" href="" ></i>
-                            <h2 class="font-weight-bold  fs-5 mt-5">Bonjour <?=$takeinfo['nom'] ?></h2>
+
+
+                         <?php
+                        if(!empty($takeinfo['photo'])){
+                        ?>
+                        <img src="imge/profil.jpg<?=$takeinfo['photo'] ?>" class="img-fluid img-thumbnail" alt="phpoto de profil">
+                        <?php
+                         }else{
+                        ?>
+                            <i class="fas fa-user-tie fa-7x mt-5"></i>
+                            <?php }?>
+                            <h2 class="font-weight-bold   mt-4">Bonjour <?=$takeinfo['nom'] ?></h2><br><br>
+                        
+
+
                         <div class="row d-flex justify-content-center">
                             <div class="col-sm-5">
                             <p class="font-weight-bold">Prenom:</p>

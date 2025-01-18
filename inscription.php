@@ -24,9 +24,9 @@ if (isset($_POST["valider"])) {
              $testmail->execute(array($email));
                 $controlmail=$testmail->rowCount();
                 if($controlmail==0){
-                $insertion =$connexion->prepare("INSERT INTO users(nom, prenom, telephone, pack, email, password)
-                VALUES (?,?,?,?,?,?)");
-               $insertion->execute(array($nom,$prenom,$telephone,$pack,$email,$mdp));
+                $insertion =$connexion->prepare("INSERT INTO users(nom,prenom,telephone,pack,email,password,photo)
+                VALUES (?,?,?,?,?,?,?)");
+               $insertion->execute(array($nom,$prenom,$telephone,$pack,$email,$mdp,''));
                header("Location: connexion.php");
 
                // Confirmation
@@ -74,6 +74,12 @@ if (isset($_POST["valider"])) {
       
         <label>password</label><br>
         <input type="password" name="password" class="form-control" placeholder="Mot de passe"><br>
+
+        <label>photo</label><br>
+        <div class="input-group mb-3>
+        <span class="input-group-text></span>
+        <input type="file" name="file" class="form-control" >
+        </div><br>
     
         <button type="submit" name="valider" class="btn btn-success"> S'inscrire </button><br>
         <i style="color:red">
@@ -86,54 +92,7 @@ if (isset($_POST["valider"])) {
     
 
     </form>
-    <!--
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col-lg-4 bg-white m-auto rounded-top">
-                    <h2 class="text-center"> Inscription </h2>
-                    <p class="text-center text-muted lead"> Simple et Rapide </p>
-                    <form action="" method="POST">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-user"></i> </span>
-                            <input type="text" name="nom" class="form-control" placeholder="Nom">
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-user"></i> </span>
-                            <input type="text" name="prenom" class="form-control" placeholder="Prénom">
-                        </div>
-                        
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-envelope"></i> </span>
-                            <input type="email" name="email" class="form-control" placeholder="E-mail">
-                        </div>
-                        
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-lock"></i> </span>
-                            <input type="password" name="password" class="form-control" placeholder="Mot de passe">
-                        </div>
-                        
-                        <div class="d-grid">
-                            <button type="submit" name="valider" class="btn btn-success"> S'inscrire </button>
-                            <p class="text-center text-muted ">
-                                <i !style="color:red"></i>
-                              <
-                                if(isset($message)){
-                                    echo "$message";
-                                }
-                                ?>
-                                En cliquant sur S’inscrire, vous acceptez nos <a href=""> Conditions générales </a>, notre <a href=""> Politique de confidentialité</a> et notre <a href=""> Politique d’utilisation</a> des cookies.
-                            </p>
-                            <p class="text-center">
-                                Avez vous déjà un compte ? <a href="connexion.html">Connexion </a> 
-                            </p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-         </div>*/
+   
 </body>
 </html>
 <script src="bootstrap.bundle.js"></script>
