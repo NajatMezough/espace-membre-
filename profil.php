@@ -36,7 +36,8 @@ if(isset($_GET['id']) && $_GET['id']>0){
                          <?php
                         if(!empty($takeinfo['photo'])){
                         ?>
-                        <img src="imge/profil.jpg<?=$takeinfo['photo'] ?>" class="img-fluid img-thumbnail" alt="phpoto de profil">
+                        <img src="imge/<?=$takeinfo['photo'] ?>" 
+                        class=" img-fluid img-thumbnail" alt="">
                         <?php
                          }else{
                         ?>

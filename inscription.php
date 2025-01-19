@@ -4,15 +4,21 @@ $connexion= new PDO('mysql:host=localhost;dbname=users_base1','root','');
 if($connexion){
     echo "conecter";
 }
+
 if (isset($_POST["valider"])) {
     echo "valider";
-    if(!empty($_POST['nom'])AND !empty($_POST['prenom']) AND !empty($_POST['telephone']) AND !empty($_POST['pack']) AND !empty($_POST['email']) AND !empty($_POST['password'])){
+
+    if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['telephone']) AND !empty($_POST['pack']) AND !empty($_POST['email']) AND !empty($_POST['password']) AND isset($_FILES['img']['name']) AND !empty($_FILES['img']['name'])){
         $nom = htmlspecialchars($_POST['nom']);
         $prenom = htmlspecialchars($_POST['prenom']);
         $telephone = htmlspecialchars($_POST['telephone']);
         $pack = htmlspecialchars($_POST['pack']);
         $email = htmlspecialchars($_POST['email']);
         $mdp = sha1($_POST['password']);
+        $img_name = $_FILES['img']['name'];
+        $tmp_name = $_FILES['img']['tmp_name'];
+        $img_size = $_FILES['img']['size'];
+        $img_folder ='imge/'.$img_name;
         if(strlen($_POST['password'])<7){
             $message="Erreur :votre mot de passe est trop court."; 
                }elseif(strlen($nom)>10||strlen($prenom)>10){ 
@@ -26,9 +32,9 @@ if (isset($_POST["valider"])) {
                 if($controlmail==0){
                 $insertion =$connexion->prepare("INSERT INTO users(nom,prenom,telephone,pack,email,password,photo)
                 VALUES (?,?,?,?,?,?,?)");
-               $insertion->execute(array($nom,$prenom,$telephone,$pack,$email,$mdp,''));
+               $insertion->execute(array($nom,$prenom,$telephone,$pack,$email,$mdp,$img_name));
                header("Location: connexion.php");
-
+               exit;
                // Confirmation
                $message =" Inscription réussie !  Merci, $prenom $nom. Votre inscription a été enregistrée avec succès.";
             }else{
@@ -50,7 +56,7 @@ if (isset($_POST["valider"])) {
     <link rel="stylesheet" href="css/all.min.css">
 </head>
 <body class="bg-light col-md-6 mx-auto p-4">
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
         <h3>registration</h3>
 
         <label>Name</label><br>
@@ -78,7 +84,7 @@ if (isset($_POST["valider"])) {
         <label>photo</label><br>
         <div class="input-group mb-3>
         <span class="input-group-text></span>
-        <input type="file" name="file" class="form-control" >
+        <input type="file" name="img" class="form-control" accept=""image/jpg"."image/jpeg"."image/png"">
         </div><br>
     
         <button type="submit" name="valider" class="btn btn-success"> S'inscrire </button><br>
