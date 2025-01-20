@@ -1,9 +1,7 @@
+<?php require("json.php") ?>
 <?php 
 $connexion= new PDO('mysql:host=localhost;dbname=users_base1','root','');
 
-if($connexion){
-    echo "conecter";
-}
 
 if (isset($_POST["valider"])) {
     echo "valider";
