@@ -23,7 +23,7 @@ if (isset($_POST["valider"]))
             $_SESSION['nom']=$info['nom'];
             $_SESSION['prenom']=$info['prenom'];
             $_SESSION['email']=$info['email'];
-            header(("Location:profil.php?id=").$_SESSION['id']);
+            header(("Location:profil.php?id="). $_SESSION['id']);
              }     
     }else{
         $message="Ereer: Désile mous me trouvons pas ce compte.";
@@ -49,16 +49,18 @@ if (isset($_POST["valider"]))
         <label>Email</label><br>
         <input type="password" name="password" class="form-control" placeholder="Mot de passe"><br>
     
-        <button type="submit" name="valider" class="btn btn-success"> S'inscrire </button><br>
-        <i style="color:red">
-                              <?php
-                                if(isset($message)){
-                                    echo $message."<br>";
-                                }
-                                ?></i>
+   
+         <div class="d-grid">
+        <button type="submit" name="valider"  class="btn btn-success"> Se Connecter </button>
+         <!-- Error message display -->
+         <?php if (isset($message)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $message; ?>
+                </div>
+            <?php endif; ?>
   
-    
-
+        <p class="text-center"> N'avez vous pas de compte ? <a href="inscription.php">Inscription </a>  </p>
+          </div>
     </form>
 
         

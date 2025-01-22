@@ -1,29 +1,47 @@
-
+[
     {
-        "nom": "reda",
-        "prenom": "jhazd",
-        "telephome": "6576565566",
-        "pack": "Individual",
-        "email": "nadiamezou5566@gmail.com",
-        "password": "nadia5566",
+        "nom": "",
+        "prenom": "",
+        "telephome": "",
+        "pack": "Small group",
+        "email": "sonbolamezou5566@gmail.com",
+        "password": "5566sonbola",
         "img": ""
     },
     {
-        "nom": "jaja",
-        "prenom": "reda",
-        "telephome": "6544545454",
-        "pack": "Individual",
-        "email": "samiramezou5566@gmail.com",
-        "password": "samira5566",
-        "img": ""
-    },
-    {
-        "nom": "caca",
-        "prenom": "dada",
-        "telephome": "66666666",
+        "nom": "dada",
+        "prenom": "sasa",
+        "telephome": "6666666",
         "pack": "Individual",
         "email": "sonbolamezou5566@gmail.com",
-        "password": "sonbola5566",
+        "password": "sonbola556",
+        "img": ""
+    },
+    {
+        "nom": "qaqa",
+        "prenom": "jaja",
+        "telephome": "6555555555555",
+        "pack": "Individual",
+        "email": "widademezou5566@gmail.com",
+        "password": "widade5566",
+        "img": ""
+    },
+    {
+        "nom": "samsam",
+        "prenom": "lala",
+        "telephome": "67757656464",
+        "pack": "Individual",
+        "email": "lailamezou5566@gmail.com",
+        "password": "laila5566",
+        "img": ""
+    },
+    {
+        "nom": "reda",
+        "prenom": "dada",
+        "telephome": "6777777777",
+        "pack": "Individual",
+        "email": "najatmezough5566@gmail.com",
+        "password": "najat5566",
         "img": ""
     }
 ]

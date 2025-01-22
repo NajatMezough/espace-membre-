@@ -69,7 +69,7 @@ if (isset($_POST["valider"])) {
 
     <script>
     function getFocus(){
-    document.getElementById("prenom").focus();
+    document.getElementById("nom").focus();
 }
 
 </script>
@@ -172,8 +172,19 @@ if (isset($_POST["valider"])) {
                 
                 <!-- Bouton de soumission -->
                 <div class="col-md-6">
-                    <button type="submit" name="valider" class="btn btn-primary w-100">S'inscrire</button>
-                </div></div>
+                <label>photo</label><br>
+        
+                <span class="input-group-text></span>
+                <input type="file" name="img" class="form-control" accept=""image/jpg"."image/jpeg"."image/png"">
+                        </div>
+            </div>
+            <div class="d-grid">
+                            <button type="button" class="btn btn-success"> Se Connecter </button>
+                           
+                            <p class="text-center">
+                                N'avez vous pas de compte ? <a href="inscription.php">Inscription </a> 
+                            </p>
+                        </div>
             </form>
         </div>
 

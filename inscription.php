@@ -84,16 +84,25 @@ if (isset($_POST["valider"])) {
         <span class="input-group-text></span>
         <input type="file" name="img" class="form-control" accept=""image/jpg"."image/jpeg"."image/png"">
         </div><br>
-    
-        <button type="submit" name="valider" class="btn btn-success"> S'inscrire </button><br>
-        <i style="color:red">
-                              <?php
-                                if(isset($message)){
-                                    echo "$message";
-                                }
-                                ?></i>
+            
   
-    
+  <div class="d-grid">
+         <button  type="submit" name="valider"  class="btn btn-success"> S'inscrire </button><br>
+          <i style="color:red">
+           <?php
+             if(isset($message)){
+              echo "$message";
+              }
+            ?>
+           </i>
+
+                            <p class="text-center text-muted ">
+                                En cliquant sur S’inscrire, vous acceptez nos <a href=""> Conditions générales </a>, notre <a href=""> Politique de confidentialité</a> et notre <a href=""> Politique d’utilisation</a> des cookies.
+                            </p>
+                            <p class="text-center">
+                                Avez vous déjà un compte ? <a href="connexion.php">Connexion </a> 
+                            </p>
+                        </div>
 
     </form>
    
