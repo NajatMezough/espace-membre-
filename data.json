@@ -1,57 +1,29 @@
-[
+
     {
-        "nom": "jj",
-        "prenom": "tt"
-    },
-    {
-        "nom": "sjhd",
-        "prenom": "sdf",
-        "telephome": "67774",
+        "nom": "reda",
+        "prenom": "jhazd",
+        "telephome": "6576565566",
         "pack": "Individual",
-        "email": "mezoughnajat7@gmail.com",
-        "password": "najat7"
-    },
-    {
-        "nom": "YGYUG",
-        "prenom": "huygyu",
-        "telephome": "656757",
-        "pack": "Individual",
-        "email": "mezoughnajat7@gmail.com",
-        "password": "najat7"
-    },
-    {
-        "nom": "shefsjhdf",
-        "prenom": "sufgysgdf",
-        "telephome": "67567",
-        "pack": "Individual",
-        "email": "mezoughnajat7@gmail.com",
-        "password": "najat1991"
-    },
-    {
-        "nom": "kkk",
-        "prenom": "jhj",
-        "telephome": "6433322",
-        "pack": "Individual",
-        "email": "n.mezough2017@gmail.com",
-        "password": "najat1991",
+        "email": "nadiamezou5566@gmail.com",
+        "password": "nadia5566",
         "img": ""
     },
     {
-        "nom": "sami",
-        "prenom": "sami",
-        "telephome": "765756",
-        "pack": "Small group",
-        "email": "najatvideo2001@gmail.com",
-        "password": "najat2001",
+        "nom": "jaja",
+        "prenom": "reda",
+        "telephome": "6544545454",
+        "pack": "Individual",
+        "email": "samiramezou5566@gmail.com",
+        "password": "samira5566",
         "img": ""
     },
     {
-        "nom": "hsjd",
-        "prenom": "sDZED",
-        "telephome": "67765645",
+        "nom": "caca",
+        "prenom": "dada",
+        "telephome": "66666666",
         "pack": "Individual",
-        "email": "lailamezough5566@gmail.com",
-        "password": "laila5566",
+        "email": "sonbolamezou5566@gmail.com",
+        "password": "sonbola5566",
         "img": ""
     }
 ]
